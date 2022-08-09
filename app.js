@@ -15,11 +15,7 @@ app.use(express.json());
 // app.get('/',() => res.send('running'))
 
 app.use("/", authRouter);
-if(process.env.NODE_ENV.trim() === 'production') {
-  app.use(express.static('client/build'))
 
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
-}
 app.all("*", (req, res, next) => {
   //   res.status(404).json({
   //     status: "failed",
@@ -31,6 +27,12 @@ app.all("*", (req, res, next) => {
   //   err.status = 'failed'
   //   next(err)
 });
+
+if(process.env.NODE_ENV.trim() === 'production') {
+  app.use(express.static('client/build'))
+
+  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+}
 
 app.use(globalErrorHandler);
 
