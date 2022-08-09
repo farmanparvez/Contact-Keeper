@@ -7,10 +7,10 @@ const globalErrorHandler = require("./controllers/errorController");
 const authRouter = require("./routes/authRouter");
 const app = express();
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV.trim() === "development") {
   app.use(morgan("dev"));
 }
-
+console.log(process.env.NODE_ENV)
 app.use(express.json());
 // app.get('/',() => res.send('running'))
 
