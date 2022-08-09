@@ -1,5 +1,5 @@
 const express = require("express");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const path = require('path')
 
 const AppError = require("./utils/appError");
