@@ -13,15 +13,13 @@ const app = express();
 // console.log(process.env.NODE_ENV)
 app.use(express.json());
 // app.get('/',() => res.send('running'))
+app.use("/", authRouter);
 
 if(process.env.NODE_ENV.trim() === 'production') {
   app.use(express.static('client/build'))
 
   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 }
-
-
-app.use("/", authRouter);
 
 app.all("*", (req, res, next) => {
   //   res.status(404).json({
