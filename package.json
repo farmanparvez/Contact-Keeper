@@ -4,12 +4,13 @@
   "description": "Keep your contact save",
   "main": "serrver.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "start:prod": "SET NODE_ENV=production && nodemon server.js",
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
     "dev": "concurrently \"npm run start\" \"npm run client\" ",
     "prod": "concurrently \"npm run start:prod\" \"npm run client\" ",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=fasle npm install --prefix client && npm run build --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "farman",
