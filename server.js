@@ -9,6 +9,6 @@ const db = process.env.DATABASE.replace('<password>', process.env.DATABASE_PASSW
 mongoose.connect(db)
 .then((res) => console.log('mongodb connected...')).catch((error) => console.log(error))
 
-console.log(process.env.NODE_ENV)
+// console.log(process.env.NODE_ENV)
 const PORT = process.env.PORT || 7000
 app.listen(PORT, () => console.log(`app is running at port ${PORT}`))
