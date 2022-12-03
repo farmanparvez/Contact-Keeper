@@ -16,9 +16,14 @@ app.use(express.json());
 app.use("/", authRouter);
 
 if(process.env.NODE_ENV.trim() === 'production') {
-  app.use(express.static('client/build'))
+  // app.use(express.static('client/build'))
 
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+  // app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+  app.use(express.static(path.resolve(__dirname, "client", "build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))
+  );
 }
 
 app.all("*", (req, res, next) => {
