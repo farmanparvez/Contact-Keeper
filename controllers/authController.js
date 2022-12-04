@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs/dist/bcrypt");
 const AppError = require('../utils/appError')
 
 const signToken = (id) => {
+  console.log(typeof (process.env.EXPIRES_IN))
   return jwt.sign({ id }, process.env.JWTSECRET, { expiresIn: process.env.EXPIRES_IN } )
 }
 
